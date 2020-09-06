@@ -1,0 +1,62 @@
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
+import './ShowPost.css'
+import { Link } from 'react-router-dom';
+
+const ShowPost = (props) => {
+    const {userId,id,title,body} = props.post;
+
+    
+    const useStyles = makeStyles({
+        root: {
+          height:'380px',
+          margin:'20px 10px',
+          
+         
+          
+        },
+        title: {
+          fontSize: 14,
+          color:'#3F51B5',
+          
+          margin:'10px 0px'
+        },
+        pos: {
+          marginBottom: 10,
+        },
+      });
+    const classes = useStyles();
+    return (
+      <Container>
+      <Grid xs={6} className='post_content'>
+          <Card className={classes.root}>
+              <CardContent>
+                <Typography className={classes.title} gutterBottom>
+                  <h4>{title}</h4>
+                </Typography>
+                <Typography variant="h5" component="h2">
+                  <p>{body}</p>
+                </Typography>
+               
+                  
+              </CardContent>
+              <CardActions>
+                <Link className='post-btn' to ={`/post/${id}`}>
+                      <Button variant="contained" color="primary" > See More</Button>
+                </Link>
+                
+              </CardActions>
+          </Card>
+        
+        </Grid>
+      </Container>
+    )};
+
+export default ShowPost;
